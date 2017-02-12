@@ -1,0 +1,40 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<context:component-scan base-package="com.migu.core.workflow"/>
+	<!-- ==========数据源 ========== -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@10.25.143.5:1521:CDDEV" />
+		<property name="user" value="cddevticket" />
+		<property name="password" value="123456" />
+		<property name="initialPoolSize" value="20"/>
+		<property name="minPoolSize" value="10"/>
+		<property name="maxPoolSize" value="150"/>
+		<property name="maxIdleTime" value="7200"/>
+		<property name="acquireIncrement" value="10"/>
+		<property name="acquireRetryAttempts" value="1"/>
+		<property name="acquireRetryDelay" value="1000"/>
+		<property name="maxStatements" value="60"/>
+		<property name="maxStatementsPerConnection" value="30"/>
+		<property name="numHelperThreads" value="10"/>
+		<property name="maxConnectionAge" value="60"/>
+		<property name="maxIdleTimeExcessConnections" value="60"/>
+		<property name="breakAfterAcquireFailure" value="false"/>
+		<property name="idleConnectionTestPeriod" value="60"/>
+		<property name="testConnectionOnCheckin" value="false" />
+	</bean>
+	
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<import resource="classpath*:activiti.cfg.xml"/>
+</beans>
