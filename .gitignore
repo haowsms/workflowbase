@@ -5,3 +5,5 @@ target
 .project
 .bpmn
 .classpath
+.idea
+*.iml
