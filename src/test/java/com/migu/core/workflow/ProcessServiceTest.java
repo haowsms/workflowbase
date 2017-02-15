@@ -1,5 +1,6 @@
 package com.migu.core.workflow;
 
+import org.activiti.spring.ProcessEngineFactoryBean;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,11 @@ import com.migu.core.workflow.process.ProcessHandlerService;
 public class ProcessServiceTest {
 	
 	@Autowired
-	private ProcessHandlerService processService;
-	
+	private ProcessEngineFactoryBean processEngine;
+
+	@Test
+	public void test(){
+		int i = 0;
+	}
 
 }

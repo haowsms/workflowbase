@@ -9,9 +9,9 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 	<!-- ==========数据源 ========== -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<property name="driverClass" value="oracle.jdbc.driver.OracleDriver" />
-		<property name="jdbcUrl" value="jdbc:oracle:thin:@10.25.143.5:1521:CDDEV" />
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@10.25.212.26:1521:orcl" />
 		<property name="user" value="cddevticket" />
-		<property name="password" value="123456" />
+		<property name="password" value="xxx123456" />
 		<property name="initialPoolSize" value="20"/>
 		<property name="minPoolSize" value="10"/>
 		<property name="maxPoolSize" value="150"/>
